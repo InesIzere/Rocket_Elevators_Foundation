@@ -97,5 +97,5 @@ Rails.application.configure do
   ENV["BLAZER_PASSWORD"] = "secret"
 ########################################
   # Blazer for development environment
-  ENV["BLAZER_DATABASE_URL"] = "postgres://codeboxx:Codeboxx1!@codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com/CristianeSantiago"
+  ENV["BLAZER_DATABASE_URL"] = "postgres://Ines:Ines2010@postgress.ccjkjz5w9bwf.ca-central-1.rds.amazonaws.com/InesIzere"
 end
