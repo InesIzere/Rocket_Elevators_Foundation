@@ -90,6 +90,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 # Using Queries & Info From DB To Create The Charts
 gem 'blazer'
+gem 'newrelic_rpm'
 
 gem "zendesk_api"
 
@@ -122,3 +123,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+
