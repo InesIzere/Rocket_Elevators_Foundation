@@ -59,33 +59,33 @@ class InterventionsController < ApplicationController
         params.permit( :customer, :building, :battery, :column, :elevator, :employee, :result, :report, :status)
     end
     
-    def createZendesk
-      client = ZendeskAPI::Client.new do |config|
-        config.url = ENV['ZENDESK_URL']
-        config.username = ENV['ZENDESK_USERNAME']
-        config.token = ENV['ZENDESK_TOKEN']
-      end
+    # def createZendesk
+    #   client = ZendeskAPI::Client.new do |config|
+    #     config.url = ENV['ZENDESK_URL']
+    #     config.username = ENV['ZENDESK_USERNAME']
+    #     config.token = ENV['ZENDESK_TOKEN']
+    #   end
       
-      ZendeskAPI::Ticket.create!(client, 
-          :subject => "Support Request for client #{Customer.find(params[:customer]).company_name}",
-          :comment => { 
-              :value => "Hello #{Employee.find(params[:employee]).full_name}, you have a new intervention.\n\n
-                        Please take note of the following service request.\n\n
-                        - Customer: #{Customer.find(params[:customer]).company_name}
-                        - Building ID: #{params[:building]}
-                        - Battery ID: #{params[:battery]}
-                        - Column ID: #{params[:column]}
-                        - Elevator ID: #{params[:elevator]}
-                        - Employee: #{Employee.find(params[:employee]).full_name}
-                        - Description: #{params[:report]}"
+    #   ZendeskAPI::Ticket.create!(client, 
+    #       :subject => "Support Request for client #{Customer.find(params[:customer]).company_name}",
+    #       :comment => { 
+    #           :value => "Hello #{Employee.find(params[:employee]).full_name}, you have a new intervention.\n\n
+    #                     Please take note of the following service request.\n\n
+    #                     - Customer: #{Customer.find(params[:customer]).company_name}
+    #                     - Building ID: #{params[:building]}
+    #                     - Battery ID: #{params[:battery]}
+    #                     - Column ID: #{params[:column]}
+    #                     - Elevator ID: #{params[:elevator]}
+    #                     - Employee: #{Employee.find(params[:employee]).full_name}
+    #                     - Description: #{params[:report]}"
                         
-          }, 
-          :requester => { 
-              "name": Employee.find_by(user_id: current_user.id).full_name, 
-          },
-          :priority => "normal",
-          :type => "problem"
-          )
-    end
+    #       }, 
+    #       :requester => { 
+    #           "name": Employee.find_by(user_id: current_user.id).full_name, 
+    #       },
+    #       :priority => "normal",
+    #       :type => "problem"
+    #       )
+    # end
 
 end
